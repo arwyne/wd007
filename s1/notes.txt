@@ -1,0 +1,48 @@
+Introduction to laravel:
+
+1. Define Framework
+2. Define Laravel
+3. Set up a Laravel Project
+4. Define MVC (Model-View-Controllers), architectural pattern of framework.
+5, Define Routes, Views and Controllers
+
+
+--------------------------------------------
+What is a Framework?
+	- a software tool that provides a way to build and run web applications. As a result, you don't need to write code on your own and waste time looking for possible miscalculations and bugs.
+
+What is Laravel?
+	Laravel is a web application framework with expressivee, elegant syntax.
+	Laravel attempts to take the pain out of development by easing common tasks used in majority of wev projects, such as authentication (Registration page & Login page), routing (localhost:8000/login.php -> localhost:8000/login), session and caching.
+
+How to set up laravel project?
+	1. Is Composer already installed?
+		Composer - package manager of php, this where the dependencies/files/folders needed for our laravel project.
+
+		Go to getcomposer.org
+
+		To check:
+			Open your gitbash/terminal
+			Then run 'composer' * this should return a a composer logo and its version
+
+	2. Create the laravel app:
+
+		Open your terminal
+		Then run the command below:
+
+		composer create-project laravel/laravel --prefer-dist <app-name>
+
+		ex. composer create-project laravel/laravel --prefer-dist laravel-template
+
+What is MVC?
+	Model Views Controllers - architectural pattern seaparates the application into three main logical components
+
+	Model - holds the data, represents the data inside the database
+
+	Views - Front end, it holds the User interface
+
+	Controllers - Back end, creates functions for our application
+
+
+Routes - used to create the routes/url for our application
+Migrations - used to create a blueprint for our tables
