@@ -24,22 +24,16 @@ get() -> method to use, it has 2 parameters
 */
 /*
 	default url '/'
+	view() -> this knows blade.php
 */
+// Route::get('/', function(){
+// 	return view('welcome');
+// });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-    	//view() -> this knows blade.php
-});
+Route::get('/', 'ProfileController@showWelcomePage');
 
+Route::get('/my-profile', 'ProfileController@showProfilePage');
 
-Route::get('/my-profile', function() {
-	return view('myprofile');
-});
+Route::get('/my-work-experience', 'ProfileController@showWorkExperiencePage');
 
-Route::get('/my-work-experience', function() {
-	return view('workexperience');
-});
-
-Route::get('/my-skill-set', function() {
-	return view('skillset');
-});
+Route::get('/my-skill-set', 'ProfileController@showSkillSetPage');

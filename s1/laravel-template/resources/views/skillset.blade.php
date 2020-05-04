@@ -54,19 +54,29 @@
 
                     <h1 class="text-center">My Skill Set</h1>
                     <div>
-                        <label>Skills</label>
+                        <label>Front End</label>
                         <ul>
-                            <li>Full Stack Development</li>
-                            <li>Front End Development</li>
-                            <li>Back End Development</li>
-                            <li>Responsive Web Design</li>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Javascript</li>
-                            <li>PHP</li>
+            
+                            @foreach ($frontend as $front)
+                               <li> {{ $front }} </li>
+                            @endforeach
+
                         </ul>
+
+                        <label>Back End</label>
+                        <ul>
+
+                            @foreach ($backend as $back)
+                            <li> {{ $back }} </li>
+                            @endforeach 
+                            
+                        </ul>
+
+                       
                     <div>
-                        <a href="/my-profile">Go back to My Profile</a>
+                        <a href="/my-skill-set">Skills</a>
+                        <a href="/my-profile">Profile</a>
+                        <a href="/my-work-experience">Work Experience</a>
                     </div>
                 </div>
             </div>

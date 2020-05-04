@@ -49,14 +49,16 @@
                 <div class="jumbotron">
 
                     <h1 class="text-center">My Work Experience</h1>
+					
+                    <label>Past Experience:</label>
+                    <p>{{ $work[0] }}</p>
 
-                    <label>2015-2019</label>
-                    <p>Maynilad Water Service Inc. | as Project Engineer</p>
+                    <label>Present: </label>
+                    <p>{{ $work[1] }}</p>
 
-                    <label>2020 - Present</label>
-                    <p>Zuitt Ph | as Student</p>
-
-                    <a href="/my-skill-set">Go to my skills</a>
+                    <a href="/my-skill-set">Skills</a>
+                    <a href="/my-profile">Profile</a>
+                    <a href="/my-work-experience">Work Experience</a>
 
                 </div>
             </div>

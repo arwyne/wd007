@@ -57,26 +57,32 @@
 
                     <div>
                         <label>Firstname: </label>
-                        <span>Arwyne</span>
+                    <span>{{ $firstname }}</span>
                     </div>
 
                     <div>
                         <label>Lastname: </label>
-                        <span>De Guzman</span>
+                    <span>{{ $lastname }}</span>
                     </div>
 
                     <div>
                         <label>Occupation: </label>
-                        <span>Student | Web Developer</span>
+                    <span>{{ $occupation }}</span>
                     </div>
 
                     <div>
                         <label>Hobbies: </label>
-                        <span>Programming and Basketball</span>
+                    <span>
+                        @foreach($hobbies as $hobby)
+                        {{ $hobby.',' }}
+                        @endforeach
+                    </span>
                     </div>
 
                     <div>
-                        <a href="/my-work-experience">Go to My work Experience</a>
+                        <a href="/my-skill-set">Skills</a>
+                        <a href="/my-profile">Profile</a>
+                        <a href="/my-work-experience">Work Experience</a>
                     </div>
                 </div>
             </div>

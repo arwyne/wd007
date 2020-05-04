@@ -38,11 +38,27 @@ What is MVC?
 	Model Views Controllers - architectural pattern seaparates the application into three main logical components
 
 	Model - holds the data, represents the data inside the database
+			Location: app/
 
 	Views - Front end, it holds the User interface
+			Location: resources/views/
+
+			We use blade template to create views for our laravel app.
+			We create views with a file extension .blade.php
+				ex. login.blade.php
 
 	Controllers - Back end, creates functions for our application
+			Location: app/Http/Controllers/
 
 
 Routes - used to create the routes/url for our application
+		Location: routes/web.php
 Migrations - used to create a blueprint for our tables
+		Location: database/migrations/
+
+PHP ARTISAN: Command line of Laravel
+
+To create a controller:
+	php artisan make:controller ProfileController
+
+	
