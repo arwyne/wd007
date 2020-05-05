@@ -11,20 +11,31 @@ class ProfileController extends Controller
             'fruits' => ['apples', 'orange', 'grapes', 'mango', 'watermelon'],
             'vegetables' => ['carrots', 'potatoes', 'broccoli', 'stringbeans']
         ];
-        return view('welcome')->with($groceries);
+       
+
+        $personalHygiene = [
+            'body' => ['safeguard body soap', 'safeguard handwash', 'kojic whitening soap'],
+            'hair' => ['treseme shampoo', 'treseme conditioner', 'keratin'],
+            'mouth' => ['colgate toothbrush', 'close up toothpaste', 'listerine mouthwash']
+        ];
+
+        // return view('welcome')->with($groceries)->with($personalHygiene);
                                     // with('fruits' => ['apples', 'oranges', 'grapes', 'mango', 'watermelon']);
                                     // with('vegetables' => ['carrots', 'potatoes', 'broccoli', 'string beans']);
         // WITH - looking for key value pair
             // to call $fruits or $fruits[0];
-        // COMPACT - stay as is
+        // COMPACT - stay as is, convert as an array
             // to call $groceries['fruits'][0];
 
-        // return view('welcome', compact('groceries'));
+
+        return view('welcome', compact('groceries', 'personalHygiene'));
+
+
 
         // $name = "Covid19 Screening Tool";
         // return view('welcome')->with('info',$name);
         // returns a view welcome.blade.php with a variable called $name
-        // with method has 2 params, 1st param customized name for the $variable, 2nd param is the variable that we want to pass on the blade.
+        // with method has 2 arguments, 1st argument customized name for the $variable, 2nd argument is the variable that we want to pass on the blade.
         //with method only exist in the Laravel Framework
 
         // return view('welcome', compact('name'));
@@ -60,7 +71,13 @@ class ProfileController extends Controller
     */
 
     function showProfilePage(){
-        $info = ['firstname'=>'Arwyne', 'lastname'=>'De Guzman', 'occupation'=>'Student | Web Developer', 'hobbies'=>['Programming', 'Basketball', 'Hiking', 'Jogging'] ];
+        $info = [
+            'firstname'=>'Arwyne', 
+            'lastname'=>'De Guzman', 
+            'occupation'=>'Student | Web Developer', 
+            'hobbies'=>['Programming', 'Basketball', 'Hiking', 'Jogging'] 
+        ];
+
         return view('myprofile')->with($info);
     }
 
@@ -70,8 +87,9 @@ class ProfileController extends Controller
     }
 
     function showSkillSetPage(){
-        $skills = ['frontend' => ['HTML', 'CSS', 'JS', 'jQuery', 'Bootstrap', 'MDBootstrap', 'Materialize', 'Bulma', 'React JS'],
-                    'backend' => ['PHP', 'MariaDB MySQL', 'Laravel Framework', 'MongoDB', 'Node JS', 'Express JS', 'Java', 'GraphQL']
+        $skills = [
+            'frontend' => ['HTML', 'CSS', 'JS', 'jQuery', 'Bootstrap', 'MDBootstrap', 'Materialize', 'Bulma', 'React JS'],
+            'backend' => ['PHP', 'MariaDB MySQL', 'Laravel Framework', 'MongoDB', 'Node JS', 'Express JS', 'Java', 'GraphQL']
     ];
         return view('skillset')->with($skills);
 

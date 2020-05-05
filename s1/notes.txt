@@ -56,9 +56,126 @@ Routes - used to create the routes/url for our application
 Migrations - used to create a blueprint for our tables
 		Location: database/migrations/
 
+--------------------------------------------------------------
 PHP ARTISAN: Command line of Laravel
 
 To create a controller:
 	php artisan make:controller ProfileController
 
+To create a Migration:
+	php artisan make:migration create_nameoftableinpluralform_table
+	ex.
+	php artisan make:migration create_profiles_table
+
+To migrate the migrations:
+	php artisan migrate
+
+To rollback the migrations:
+	php artisan migrate: rollback
+
+To create a Model:
+	php artisan make:model Modelnameinsingularform
+	ex.
+	php artisan make:model Profile
+
+To create a Model and Migration at the same time
+	php artisan make:model Modelnamesingularform -m
+--------------------------------------------------------------
+Establishing the connection of mysql to our laravel app
+1. Find the .env file and open 
+2. Go to line of code 9 to 14 then update the following:
+
+	DB_CONNECTION=mysql
+	DB_HOST=127.0.0.1 or remotemysql.com
+	DB_PORT=3306
+	DB_DATABASE=<name of database>
+	DB_USERNAME=root
+	DB_PASSWORD=
+
+3. Create tables using migrations
+4. Modify the migrations
+5. Then migrate
+
+
+---------------------------------------------------------------
+Model 
+
+	Ex.
+		Mobile Phone - Brand name
+					 - Color 
+					 - Unit Number
+					 - Memory
+					 - Processor
+					 - Camera
+					 - Screen Size
+					 - What is the functionalities?
+
+		If we create a new Mobile Phone it should have the following characteristics above.
+
+		Mobile Phone - B56-Super-Mobile
+					 - Hot Pink
+					 - B56-021920
+					 - 12GB RAM, 1TB ROM
+					 - Snap Dragon 865
+					 - Front Camera 24 Mega Pixels, Back Camera 64 megapixels
+					 - 6.4 Full view display
+					 - Can make holographic call, text, touchID for security, wireless charing, teleporting, Anti Covid Phone
+		
+		*Now this record (Mobile phone b56-super-mobile) is a representation of a Model
+
+-------------------------------------------------------------------
+PHP TINKER - is a quick and easy way to communicate with our data inside the database
+		   - It's a laravel interactive language shell, a way to do the repl (read-eval-print-loop)
+
+Steps to start and CRUD records under PHP Tinker:
+1. Open your laravel-project's terminal/gitbash
+2. Run command: php artisan Tinker
+3. Then follow the steps on the images that I pushed on S2/
+
+-------------------------------------------------------------------
+Laravel Todo list app
+
+1. Create the project 
+2. Create the database
+3. List down the possible migrations:
+	tasks - id, task_name (string), task_time (timestamp), due_date (timestamp), priority_id (unsginedBigInteger), user_id (unsignedBigInteger), timestamps
+	priorities - id, priority_name (string), timestamps
+4. Create the migrations and models
+-------------------------------------------------------------------
+Activity (May 5)
+CRUD using PHP Tinker
+Instructions
+1. Open your gitbash/terminal on your laravel app.
+2. Run PHP Tinker
+3. Then add the following records on your users table, tasks table, and priorities table:
+
+	users table:
+		name, email, password 
+	Please insert the ff:
+		John Doe, johndoe@mail.com, Hash::make('johndoe123')
+
+
+	priorities table:
+	Please insert the ff:
+		High Level
+		Mid Level
+		Low Level
 	
+	tasks table:
+		task_name, task_time, priority_id, user_id
+	Please insert the ff:
+		1. Wake up, 05/06/2020 5:30, High Level, John Doe
+		2. Eat Breakfast, 05/06/2020 7:30, High Level, John Doe
+		3. Take a bath, 05/06/2020 8:30. High Level, John Doe
+		4. Watch Code Tutorial, 05/06/2020 9:00, Mid Level John Doe
+		5. Write Code, 05/06/2020 9:20, High Level, John Doe
+		6. AM Break, 05/06/2020 10:00, Low Level, John Doe
+		7. Work Out, 05/06/2020 10:30, Mid Level, John Doe
+		8. Cook Lunch, 05/06/2020 10:45, High Level, John Doe
+		9. Lunch Break, 05/06/2020 11:10, High Level, John Doe
+		10. Write Code, 05/06/2020 13:00, High Level, John Doe
+		11. PM Break, 05/06/2020 15:00, Mid Level, John Doe
+		12. Write Code, 05/06/2020 15:30, High Level, John Doe
+		13. Dinner, 05/06/2020 18:30, High Level, John Do
+		14. Sleep, 05/06/2020 19:30, High Level, John Doe
+		15. Repeat, 05/07/2020 05:30, High Level, John Doe

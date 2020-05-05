@@ -81,35 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{-- dd($fruits or $vegetables) --}}
-                    {{--using with--}}
-                    {{-- dd($groceries) --}}
-                    {{-- using compact--}}
-
-                    {{-- dd() -> dump and die, is use to dump value from the given variable/s. it dumps and die/stop the execution code below --}}
-                    {{-- Double curly braces/double mustache allows us to input php codes or display/echo a value from a variable --}}
-
-                    {{-- @foreach($groceries['fruits'] as $fruit)
-                        $fruit
-                    @endforeach
-
-                    @foreach($groceries['vegetables'] as $vegetable)
-                        $vegetable
-                    @endforeach --}}
-                    
-                    @dd($personalHygiene)
-                    {{-- @foreach($fruits as $fruit)
-                        {{ $fruit }}
-                    @endforeach
-
-                    @foreach($vegetables as $vegetable)
-                       {{ $vegetable }}
-                    @endforeach --}}
-
-
-                    
-                    
-                    
+                    Laravel
                 </div>
 
                 <div class="links">
