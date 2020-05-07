@@ -67,6 +67,11 @@ To create a Migration:
 	ex.
 	php artisan make:migration create_profiles_table
 
+To add a column in an existing migration in our database:
+	php artisan make:migration add_columnname_to_tablename_table --table=tablename
+	ex.
+	php artisan make:migration add_status_to_task_table --table=tasks
+
 To migrate the migrations:
 	php artisan migrate
 
@@ -79,7 +84,14 @@ To create a Model:
 	php artisan make:model Profile
 
 To create a Model and Migration at the same time
-	php artisan make:model Modelnamesingularform -m
+	php artisan make:model Modelnamesingularform -m (-m is for migration)
+	ex.
+	php artisan make:model Profile -m (this will create model first, then migration)
+
+To create a Model, migration and controller at the same time:
+	php artisan make:model Modelname -m -c (or -mc)
+	ex.
+	php artisan make:model Profile -m -c (this will create a model first, then a migration, then a controller)
 --------------------------------------------------------------
 Establishing the connection of mysql to our laravel app
 1. Find the .env file and open 
@@ -179,3 +191,39 @@ Instructions
 		13. Dinner, 05/06/2020 18:30, High Level, John Do
 		14. Sleep, 05/06/2020 19:30, High Level, John Doe
 		15. Repeat, 05/07/2020 05:30, High Level, John Doe
+
+--------------------------------------------------------------------
+CRUD functionalities using Models, Views, Controller and Routes
+1. Create the necessary migrations and models.
+2. Set up the database using .env (line of code no. 9-14)
+3. Create views/blade file for our page, then create the necessary forms (creating records), list items(retrieving records).
+4. Create a method under our controller that will return the necessary views/blade.
+5. Register a route that will call the method under the controller.
+
+*Notes to remember when using forms for CRUD functionalities
+	1. Make sure that you a form "action" and "method", if you have file uploads add the "enctype=multipart/formdata"
+	2. Use the '@csrf' token for security purposes otherwise if you submit your form-data it will return 419|Page Expired
+	3. Use the '@method('')' field (method spoofing) for DELETE and PUT/PATCH method.
+		*Our HTML forms does not support PUT/PATCH and DELETE. So when we are to DELETE or PUT/PATCH(update) our records we have to trick our HTML form methods to recognize it.
+	4. Use the necessary Route methods which are:
+		if we are to retrieve records/pages, we use the Route::get('url', 'Controller@method');
+		if we are to create records or send data to controllers using form, we use the Route::post('url', Controller@method);
+		if we are to delete records, we use the Route::delete('url', 'Controller@method');
+			*make sure on the part that when using the route delete, we also use the @method('DELETE') field on our form
+		if we are to update records, we use the Route::put('url', 'Controller@method') or Route::patch('url', 'Controller@method');
+			*make sure that when we are using the route put/patch, we also use the @method('PUT') or @method('PATCH') field on our form
+		What's the difference between PUT and PATCH?
+			PUT - replace the whole record
+			PATCH - modify the attributes of the records
+				If we update the user's firstname and lastname using Patch method, it will update on the firstname and lastname field.
+				However if use the Put method, the whole record will be updated as if it is a new record.
+
+-------------------------------------------------------------------------------------------------------------
+Mini activity (May 07)
+Instructions:
+1. Register a route that will call the TaskController@updateTask
+2. For this route, add the necessary wildcard to be used inside our method updateTask
+3. For this route, make sure that you use the necessary route method (put/patch)
+4. On your update form, add the necessary form action, make sure to pass the task id.
+5. On your update form, add the necessary method field (put/patch)
+6. Push your codes before 10:50am

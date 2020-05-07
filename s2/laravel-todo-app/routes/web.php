@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Laravel create a RESTful methods that we can use in our CRUD functionalities
+Route::get('/tasks', 'TaskController@viewTaskPage');
+Route::post('/tasks/add', 'TaskController@addTask');
+// {id} -> wildcard
+Route::delete('/tasks/delete/{taskid}', 'TaskController@deleteTask');
+Route::patch('/tasks/update/{taskid}', 'TaskController@updateTask');
