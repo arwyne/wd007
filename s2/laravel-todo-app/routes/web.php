@@ -24,3 +24,7 @@ Route::post('/tasks/add', 'TaskController@addTask');
 // {id} -> wildcard
 Route::delete('/tasks/delete/{taskid}', 'TaskController@deleteTask');
 Route::patch('/tasks/update/{taskid}', 'TaskController@updateTask');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

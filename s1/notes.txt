@@ -92,6 +92,9 @@ To create a Model, migration and controller at the same time:
 	php artisan make:model Modelname -m -c (or -mc)
 	ex.
 	php artisan make:model Profile -m -c (this will create a model first, then a migration, then a controller)
+
+To clear cache
+	php artisan cache:clear
 --------------------------------------------------------------
 Establishing the connection of mysql to our laravel app
 1. Find the .env file and open 
@@ -227,3 +230,42 @@ Instructions:
 4. On your update form, add the necessary form action, make sure to pass the task id.
 5. On your update form, add the necessary method field (put/patch)
 6. Push your codes before 10:50am
+
+
+-------------------------------------------------------------------------------------------
+To create Authentication on our laravel Application:
+1. Go to your laravel app's gitbash/terminal
+2. Run below command:
+	composer require laravel/ui 
+
+	php artisan ui:auth
+
+*It will create login page, registration page, Authentication Controllers, Middlewares.
+Auth/ folder will appear (under the app/Http/Controllers, and under the resources/views/)
+
+It will create also a Auth routes & Home route under web.php file
+
+Open your app.blade.php(under the resources/views/layouts):
+	Then add Bootstrap CDN (CSS & necessary JS)
+
+Authentication -> the process of verifying the credentials from login page our database. Once the credentials is verified, user is authenticated.
+If we authenticated, we are already logged in on the application.
+
+use Auth; -> we use the credentials of the currently authenticated user.
+--------------------------------------------------------------------------------------------
+Creating Blade Templates
+
+master layout - app.blade.php
+	*yield directives
+	@yield('content')
+
+children layout - login, register, tasks
+	*extends and section directives
+	@extends('layout.app')
+
+	@section('layout.app')
+		In between this section, all the html elements will be displayed by the app
+	@endsection('')
+
+----------------------------------------------------------------------------------------------
+	

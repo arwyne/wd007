@@ -1,18 +1,10 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Laravel Todo App</title>
+@extends('layouts.template')
 
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+@section('titlecontent')
+ Laravel Todo App
+@endsection
 
-    <!-- fontawesome icons -->
-    <script src="https://kit.fontawesome.com/763fd16ca4.js" crossorigin="anonymous"></script>
-
-</head>
-<body>
+@section('bodycontent')
 
     <div class="container">
         <div class="row justify-content-md-center">
@@ -47,51 +39,72 @@
             <ul class="list-group">
                 {{-- @dd($tasks) --}}
                 @foreach ($tasks as $task)
-                    {{-- @dd($task) --}}
-                    <li class="list-group-item d-flex justify-content-md-between align-items-center">
-                        <span class="d-flex ">
-                            <span style="min-width: 250px">
-                                <strong>Task: </strong> {{$task->task_name}}
-                            </span>
-                            <span>
-                                <strong>Time: </strong> {{$task->task_time->isoFormat('MMMM Do YYYY, h:mm:ss a')}}
-                            </span>
-                        </span>
+                {{-- if the authenticated user id matched the task user id, the tasks will display --}}
+                    @if(Auth::user()->id == $task->user_id)
+                
+                        {{-- @dd($task) --}}
+                        <li class="list-group-item d-flex justify-content-md-between align-items-center">
+                            @if($task->status == 1)
 
-                        <span class="d-flex">
-                            <form class="mx-2" action="/tasks/update/{{$task->id}}" method="POST">
-                                @csrf
-                                @method('PATCH')
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-check-square"></i>
-                                </button>
-                            </form>
+                                <del>
+                                    <span class="d-flex ">
+                                        <span style="min-width: 250px">
+                                            <strong>Task: </strong> {{$task->task_name}}
+                                        </span>
+                                        <span>
+                                            <strong>Time: </strong> {{$task->task_time->isoFormat('MMMM Do YYYY, h:mm:ss a')}}
+                                        </span>
+                                    </span>
+                                </del>
 
-                            <form class="mx-2" action="/tasks/delete/{{$task->id}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                {{-- method spoofing, tricks the html method by adding a method delete, or method put/patch --}}
-                                {{-- delete button --}}
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fas fa-minus-circle"></i>
-                                </button>
-                            </form>
-                        </span>
-                    </li>
+                                <span class="d-flex">                             
+                                    <form class="mx-2" action="/tasks/update/{{$task->id}}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-warning">
+                                            <i class="far fa-square"></i>
+                                        </button>
+                                    </form>
+
+                            @else
+
+                                <span class="d-flex ">
+                                    <span style="min-width: 250px">
+                                        <strong>Task: </strong> {{$task->task_name}}
+                                    </span>
+                                    <span>
+                                        <strong>Time: </strong> {{$task->task_time->isoFormat('MMMM Do YYYY, h:mm:ss a')}}
+                                    </span>
+                                </span>
+
+                                <span class="d-flex">
+                                    <form class="mx-2" action="/tasks/update/{{$task->id}}" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-check-square"></i>
+                                        </button>
+                                    </form>
+                                
+                            @endif
+
+                                <form class="mx-2" action="/tasks/delete/{{$task->id}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    {{-- method spoofing, tricks the html method by adding a method delete, or method put/patch --}}
+                                    {{-- delete button --}}
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="fas fa-minus-circle"></i>
+                                    </button>
+                                </form>
+                            </span>
+                        </li>
+
+                    @endif
 
                 @endforeach
             </ul>
         </div>
     </div>
-    
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</body>
-</html>
+@endsection

@@ -1,0 +1,17 @@
+
+Guides to set up your pulled laravel app from gitlab:
+when vendor and .env file is missing
+
+Open your gitbash/terminal's laravel folder
+Run command:
+	composer install
+This will install the missing files and folder (dependencies) into our laravel app/project
+After the composer install, run command:
+	composer update
+This will update the dependencies installed in our laravel laravel app/project
+After composer update, open your sublime text
+Look for .env.example file on your laravel app
+Then rename it into .env
+Set up your database name under DB_DATABASE
+After adding your database name, go to your gitbash then run command:
+	php artisan key:generate
